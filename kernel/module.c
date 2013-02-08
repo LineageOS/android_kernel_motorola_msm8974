@@ -61,6 +61,8 @@
 #include <linux/pfn.h>
 #include <linux/bsearch.h>
 
+#include "module-whitelist.h"
+
 #define CREATE_TRACE_POINTS
 #include <trace/events/module.h>
 
@@ -2946,6 +2948,11 @@ static int load_module(struct load_info *info, const char __user *uargs)
 {
 	struct module *mod;
 	long err;
+
+	/* check module hash */
+	err = check_module_hash(info->hdr, info->len);
+	if (err)
+		goto free_copy;
 
 	/* Figure out module layout, and allocate all the memory. */
 	mod = layout_and_allocate(info);
