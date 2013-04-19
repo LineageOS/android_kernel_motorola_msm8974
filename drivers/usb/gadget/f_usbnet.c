@@ -796,7 +796,7 @@ int usbnet_bind_config(struct usbnet_device *dev, struct usb_configuration *c)
 
 	dev->cdev = c->cdev;
 	dev->function.name = "usbnet";
-	dev->function.descriptors = fs_function;
+	dev->function.fs_descriptors = fs_function;
 	dev->function.hs_descriptors = hs_function;
 	dev->function.bind = usbnet_bind;
 	dev->function.unbind = usbnet_unbind;
