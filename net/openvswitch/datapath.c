@@ -210,9 +210,9 @@ void ovs_dp_process_received_packet(struct vport *p, struct sk_buff *skb)
 
 out:
 	/* Update datapath statistics. */
-	u64_stats_update_begin(&stats->sync);
+	u64_stats_update_begin(&stats->syncp);
 	(*stats_counter)++;
-	u64_stats_update_end(&stats->sync);
+	u64_stats_update_end(&stats->syncp);
 }
 
 static struct genl_family dp_packet_genl_family = {
@@ -253,9 +253,9 @@ int ovs_dp_upcall(struct datapath *dp, struct sk_buff *skb,
 err:
 	stats = per_cpu_ptr(dp->stats_percpu, smp_processor_id());
 
-	u64_stats_update_begin(&stats->sync);
+	u64_stats_update_begin(&stats->syncp);
 	stats->n_lost++;
-	u64_stats_update_end(&stats->sync);
+	u64_stats_update_end(&stats->syncp);
 
 	return err;
 }
@@ -722,9 +722,9 @@ static void get_dp_stats(struct datapath *dp, struct ovs_dp_stats *stats)
 		percpu_stats = per_cpu_ptr(dp->stats_percpu, i);
 
 		do {
-			start = u64_stats_fetch_begin_bh(&percpu_stats->sync);
+			start = u64_stats_fetch_begin_bh(&percpu_stats->syncp);
 			local_stats = *percpu_stats;
-		} while (u64_stats_fetch_retry_bh(&percpu_stats->sync, start));
+		} while (u64_stats_fetch_retry_bh(&percpu_stats->syncp, start));
 
 		stats->n_hit += local_stats.n_hit;
 		stats->n_missed += local_stats.n_missed;
@@ -1264,7 +1264,7 @@ static int ovs_dp_cmd_new(struct sk_buff *skb, struct genl_info *info)
 	for_each_possible_cpu(i) {
 		struct dp_stats_percpu *dpath_stats;
 		dpath_stats = per_cpu_ptr(dp->stats_percpu, i);
-		u64_stats_init(&dpath_stats->sync);
+		u64_stats_init(&dpath_stats->syncp);
 	}
 
 	/* Set up our datapath device. */
