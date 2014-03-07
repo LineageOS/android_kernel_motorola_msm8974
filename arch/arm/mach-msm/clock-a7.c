@@ -316,9 +316,11 @@ static int clock_a7_probe(struct platform_device *pdev)
 		return PTR_ERR(vdd_cpu.regulator[0]);
 	}
 
-	a7ssmux.num_parents = of_get_clk_src(pdev, a7ssmux.parents);
-	if (IS_ERR_VALUE(a7ssmux.num_parents))
-		return a7ssmux.num_parents;
+	rc = of_get_clk_src(pdev, a7ssmux.parents);
+	if (IS_ERR_VALUE(rc))
+		return rc;
+
+	a7ssmux.num_parents = rc;
 
 	get_speed_bin(pdev, &speed_bin, &version);
 	mmi_acpu_bin_set(&speed_bin, NULL, &version);
