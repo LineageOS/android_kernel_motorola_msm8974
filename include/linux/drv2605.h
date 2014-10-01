@@ -343,6 +343,7 @@ struct drv260x_platform_data {
 	int effects_library;
 	int disable_calibration;
 	struct regulator *vibrator_vdd;
+	struct regulator *static_vdd;
 	unsigned char *calibration_data;
 };
 #endif				/* __KERNEL__ */

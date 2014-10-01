@@ -401,6 +401,7 @@ static struct drv260x_platform_data *drv260x_of_init(struct i2c_client *client)
 	of_property_read_u32(np, "disable_calibration",
 						&pdata->disable_calibration);
 	pdata->vibrator_vdd = devm_regulator_get(&client->dev, "vibrator_vdd");
+	pdata->static_vdd = devm_regulator_get(&client->dev, "static-vdd");
 
 	regs_arr = of_get_property(np, "calibration-data",
 			&regs_len);
@@ -816,7 +817,7 @@ static int drv260x_probe(struct i2c_client *client,
 			 const struct i2c_device_id *id)
 {
 	struct drv260x_platform_data *pdata = NULL;
-	int i;
+	int err ,i;
 
 	if (client->dev.of_node)
 		pdata = drv260x_of_init(client);
@@ -827,6 +828,15 @@ static int drv260x_probe(struct i2c_client *client,
 		dev_err(&client->dev, "platform data is NULL, exiting\n");
 		return -ENODEV;
 	}
+
+	if (IS_ERR(pdata->static_vdd)) {
+		err = PTR_ERR(pdata->static_vdd);
+		dev_info(&client->dev, "static vdd err %d\n", err);
+		if (err == -EPROBE_DEFER)
+			return -EPROBE_DEFER;
+	} else if (regulator_enable(pdata->static_vdd))
+		dev_err(&client->dev, "vibrator static vreg error\n");
+
 	if (!i2c_check_functionality(client->adapter, I2C_FUNC_I2C)) {
 		printk(KERN_ALERT "drv260x probe failed");
 		return -ENODEV;
