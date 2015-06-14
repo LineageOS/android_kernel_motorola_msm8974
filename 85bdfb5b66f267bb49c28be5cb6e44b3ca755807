@@ -45,6 +45,23 @@
       "revId": "85bdfb5b66f267bb49c28be5cb6e44b3ca755807",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a461143_d20b247c",
+        "filename": "arch/arm/mach-msm/board-8974-gpiomux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-06-14T12:45:13Z",
+      "side": 1,
+      "message": "I agree with Ethan that this should be a separate commit.\n\nIn addition to making it a separate commit, can you please just move the definition of setting_gpio_spi_config outside of the ifdef instead of duplicating it.  That way if it gets changes in caf and/or motorola, we\u0027ll get a merge conflict and deal with it appropriately.",
+      "revId": "85bdfb5b66f267bb49c28be5cb6e44b3ca755807",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
