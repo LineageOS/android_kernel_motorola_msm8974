@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a461143_7246f0c0",
+        "filename": "arch/arm/configs/cyanogenmod_victara_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-14T12:40:38Z",
+      "side": 1,
+      "message": "Noting that ZRAM is now disabled. I don\u0027t see any reason for it to be on for 8974, but noting it anyway.",
+      "range": {
+        "startLine": 3075,
+        "startChar": 2,
+        "endLine": 3075,
+        "endChar": 17
+      },
+      "revId": "85bdfb5b66f267bb49c28be5cb6e44b3ca755807",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a461143_5249f4cf",
+        "filename": "arch/arm/mach-msm/board-8974-gpiomux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-14T12:40:38Z",
+      "side": 1,
+      "message": "Maybe separate this out from a defconfig change.",
+      "range": {
+        "startLine": 177,
+        "startChar": 14,
+        "endLine": 177,
+        "endChar": 29
+      },
+      "revId": "85bdfb5b66f267bb49c28be5cb6e44b3ca755807",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
