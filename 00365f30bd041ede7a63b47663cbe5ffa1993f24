@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa31d9ce_0a3adbcd",
+        "filename": "drivers/devfreq/devfreq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-06-15T20:43:22Z",
+      "side": 1,
+      "message": "This should be PAGE_SIZE - num_chars or else we could overflow the page if there are a huge number of very large frequencies.",
+      "revId": "00365f30bd041ede7a63b47663cbe5ffa1993f24",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa31d9ce_2a379fe4",
+        "filename": "drivers/devfreq/devfreq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-06-15T20:43:22Z",
+      "side": 1,
+      "message": "Ditto (or as the original code did, remove the trailing space which guarantees that you have room in the buffer).",
+      "revId": "00365f30bd041ede7a63b47663cbe5ffa1993f24",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
