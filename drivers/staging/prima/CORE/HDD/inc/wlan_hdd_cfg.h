@@ -2565,6 +2565,11 @@ This feature requires the dependent cfg.ini "gRoamPrefer5GHz" set to 1 */
 #define CFG_SAR_BOFFSET_SET_CORRECTION_MAX       (1)
 #define CFG_SAR_BOFFSET_SET_CORRECTION_DEFAULT   (0)
 
+#define CFG_MAXCHAN_FOR_CHANTIME_CORR_NAME       "gMaxChannelForMoreDwellTime"
+#define CFG_MAXCHAN_FOR_CHANTIME_CORR_MIN        (0)
+#define CFG_MAXCHAN_FOR_CHANTIME_CORR_MAX        (35)
+#define CFG_MAXCHAN_FOR_CHANTIME_CORR_DEFAULT    (10)
+
 /*--------------------------------------------------------------------------- 
   Type declarations
   -------------------------------------------------------------------------*/ 
@@ -3082,6 +3087,7 @@ typedef struct
    v_U16_t                      rps_mask;
    v_U8_t                      boffset_correction_enable;
    v_BOOL_t                    disableBarWakeUp;
+   v_U8_t                      max_chan_for_dwell_time_cfg;
 } hdd_config_t;
 
 /*--------------------------------------------------------------------------- 
