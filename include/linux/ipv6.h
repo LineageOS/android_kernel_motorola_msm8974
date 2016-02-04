@@ -177,6 +177,7 @@ struct ipv6_devconf {
 	__s32		force_tllao;
 	__s32		accept_ra_prefix_route;
 	__s32		accept_ra_mtu;
+	__s32		drop_unsolicited_na;
 	void		*sysctl;
 };
 
@@ -223,6 +224,7 @@ enum {
 	DEVCONF_USE_OPTIMISTIC,
 	DEVCONF_ACCEPT_RA_MTU,
 	DEVCONF_DROP_UNICAST_IN_L2_MULTICAST,
+	DEVCONF_DROP_UNSOLICITED_NA,
 	DEVCONF_MAX
 };
 
