@@ -157,7 +157,7 @@ static void do_force_revoke(struct hw3d_info *info)
 	spin_unlock_irqrestore(&info->lock, flags);
 }
 
-#define REVOKE_TIMEOUT		(2 * HZ)
+#define REVOKE_TIMEOUT		2000
 static void locked_hw3d_revoke(struct hw3d_info *info)
 {
 	/* force us to wait to suspend until the revoke is done. If the
@@ -166,7 +166,7 @@ static void locked_hw3d_revoke(struct hw3d_info *info)
 	wake_lock(&info->wake_lock);
 	info->revoking = 1;
 	wake_up(&info->revoke_wq);
-	mod_timer(&info->revoke_timer, jiffies + REVOKE_TIMEOUT);
+	mod_timer(&info->revoke_timer, jiffies + msecs_to_jiffies(REVOKE_TIMEOUT));
 }
 
 bool is_msm_hw3d_file(struct file *file)

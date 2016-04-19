@@ -41,7 +41,7 @@
 #define SAFETY_MEM_SIZE (65536 + sizeof(struct rpc_request_hdr))
 
 /* modem load timeout */
-#define MODEM_LOAD_TIMEOUT (10 * HZ)
+#define MODEM_LOAD_TIMEOUT 10000
 
 /* Next minor # available for a remote server */
 static int next_minor = 1;
@@ -75,7 +75,7 @@ static void *msm_rpcrouter_load_modem(void)
 	else {
 		rc = wait_for_completion_interruptible_timeout(
 						&rpc_remote_router_up,
-						MODEM_LOAD_TIMEOUT);
+						msecs_to_jiffies(MODEM_LOAD_TIMEOUT));
 		if (!rc)
 			rc = -ETIMEDOUT;
 		if (rc < 0) {

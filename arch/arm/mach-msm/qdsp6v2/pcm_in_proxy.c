@@ -309,7 +309,7 @@ static ssize_t pcm_in_read(struct file *file, char __user *buf,
 	while (count > 0) {
 		rc = wait_event_timeout(pcm->wait,
 				(atomic_read(&pcm->in_count) ||
-				atomic_read(&pcm->in_stopped)), 2 * HZ);
+				atomic_read(&pcm->in_stopped)), msecs_to_jiffies(2000));
 		if (!rc) {
 			pr_err("%s: wait_event_timeout failed\n", __func__);
 			goto fail;
@@ -416,7 +416,7 @@ static long pcm_in_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		afe_start(pcm);
 		rc = wait_event_timeout(pcm->wait,
 				((pcm->start == 1) ||
-				atomic_read(&pcm->in_stopped)), 5 * HZ);
+				atomic_read(&pcm->in_stopped)), msecs_to_jiffies(5000));
 		if (!rc) {
 			pr_err("%s: wait_event_timeout failed\n", __func__);
 			goto fail;
