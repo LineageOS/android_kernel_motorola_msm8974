@@ -374,7 +374,7 @@ static void ion_handle_get(struct ion_handle *handle)
 int ion_handle_put(struct ion_handle *handle)
 {
 	struct ion_client *client = handle->client;
-	int ret;
+	int ret = 0;
 
 	mutex_lock(&client->lock);
 	ret = kref_put(&handle->ref, ion_handle_destroy);
