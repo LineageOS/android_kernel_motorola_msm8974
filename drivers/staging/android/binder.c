@@ -34,7 +34,6 @@
 #include <linux/vmalloc.h>
 #include <linux/slab.h>
 #include <linux/security.h>
-#include <linux/fdleak_dbg.h>
 
 #include "binder.h"
 
@@ -448,7 +447,6 @@ static void task_fd_install(
 	BUG_ON(fdt->fd[fd] != NULL);
 	rcu_assign_pointer(fdt->fd[fd], file);
 	spin_unlock(&files->file_lock);
-	warn_if_big_fd(fd, proc->tsk);
 }
 
 /*
