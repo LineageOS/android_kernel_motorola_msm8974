@@ -240,7 +240,7 @@ static int create_sysfs_interfaces(struct stm401_data *ps_stm401)
 
 int64_t stm401_timestamp_ns(void)
 {
-	ktime_t now = alarm_get_elapsed_realtime();
+	ktime_t now = ktime_get_boottime();
 	return ktime_to_ns(now);
 }
 
