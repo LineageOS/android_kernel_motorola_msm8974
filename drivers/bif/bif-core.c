@@ -312,7 +312,7 @@ static void bif_enter_irq_mode_work(struct work_struct *work)
 	struct delayed_work *dwork = to_delayed_work(work);
 	struct bif_ctrl_dev *bdev
 		= container_of(dwork, struct bif_ctrl_dev, enter_irq_mode_work);
-	int rc, i;
+	int rc = 0, i = 0;
 
 	mutex_lock(&bdev->mutex);
 	for (i = 0; i < BIF_TRANSACTION_RETRY_COUNT; i++) {
@@ -3725,7 +3725,7 @@ struct bif_ctrl_dev *bif_ctrl_register(struct bif_ctrl_desc *bif_desc,
 	struct bif_slave_dev *sdev;
 	bool battery_present = false;
 	bool slaves_present = false;
-	int rc, rid_ohm;
+	int rc = 0, rid_ohm = 0;
 
 	if (!bif_desc) {
 		pr_err("Invalid bif_desc specified\n");

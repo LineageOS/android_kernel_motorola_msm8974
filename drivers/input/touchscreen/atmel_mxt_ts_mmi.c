@@ -294,7 +294,7 @@ struct mxt_data {
 	bool in_bootloader;
 	u16 mem_size;
 	u32 config_id;
-	u32 firmware_id;
+	u32 firmware_id = 0;
 	u8 t100_aux_ampl;
 	u8 t100_aux_area;
 	u8 t100_aux_vect;

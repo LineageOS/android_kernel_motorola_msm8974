@@ -1812,7 +1812,7 @@ static void synaptics_rmi4_fwu_attn(struct synaptics_rmi4_data *rmi4_data,
 
 static int synaptics_rmi4_fwu_init(struct synaptics_rmi4_data *rmi4_data)
 {
-	int retval;
+	int retval = 0;
 	unsigned char attr_count;
 	struct pdt_properties pdt_props;
 	struct synaptics_rmi4_device_info *rmi;
