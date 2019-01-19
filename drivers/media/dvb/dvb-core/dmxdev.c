@@ -2824,6 +2824,7 @@ static int dvb_dmxdev_ts_event_cb(struct dmx_ts_feed *feed,
 		wake_up_all(&buffer->queue);
 		return 0;
 	}
+<<<<<<< HEAD
 
 	free = dvb_ringbuffer_free(&dmxdevfilter->buffer);
 
@@ -2911,6 +2912,13 @@ static int dvb_dmxdev_ts_event_cb(struct dmx_ts_feed *feed,
 			events->current_event_data_size = 0;
 		 }
 	}
+=======
+	ret = dvb_dmxdev_buffer_write(buffer, buffer1, buffer1_len);
+	if (ret == buffer1_len)
+		ret = dvb_dmxdev_buffer_write(buffer, buffer2, buffer2_len);
+	if (ret < 0)
+		buffer->error = ret;
+>>>>>>> v3.4.90
 	spin_unlock(&dmxdevfilter->dev->lock);
 	wake_up_all(&buffer->queue);
 	return 0;

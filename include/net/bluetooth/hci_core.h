@@ -1031,6 +1031,7 @@ void hci_send_to_sock(struct hci_dev *hdev, struct sk_buff *skb,
 
 /* Management interface */
 int mgmt_control(struct sock *sk, struct msghdr *msg, size_t len);
+
 int mgmt_index_added(u16 index);
 int mgmt_index_removed(u16 index);
 int mgmt_powered(u16 index, u8 powered);
@@ -1069,6 +1070,8 @@ void mgmt_inquiry_complete_evt(u16 index, u8 status);
 void mgmt_disco_timeout(unsigned long data);
 void mgmt_disco_le_timeout(unsigned long data);
 int mgmt_encrypt_change(u16 index, bdaddr_t *bdaddr, u8 status);
+
+int mgmt_set_powered_failed(struct hci_dev *hdev, int err);
 
 /* LE SMP Management interface */
 int le_user_confirm_reply(struct hci_conn *conn, u16 mgmt_op, void *cp);
@@ -1111,7 +1114,6 @@ void hci_le_conn_update(struct hci_conn *conn, u16 min, u16 max,
 					u16 latency, u16 to_multiplier);
 void hci_le_start_enc(struct hci_conn *conn, __le16 ediv, __u8 rand[8],
 							__u8 ltk[16]);
-void hci_le_ltk_reply(struct hci_conn *conn, u8 ltk[16]);
 void hci_le_ltk_neg_reply(struct hci_conn *conn);
 
 void hci_read_rssi(struct hci_conn *conn);
