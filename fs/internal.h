@@ -81,17 +81,14 @@ extern struct super_block *user_get_super(dev_t);
 /*
  * open.c
  */
-struct nameidata;
-extern struct file *nameidata_to_filp(struct nameidata *);
-extern void release_open_intent(struct nameidata *);
 struct open_flags {
 	int open_flag;
 	umode_t mode;
 	int acc_mode;
 	int intent;
 };
-extern struct file *do_filp_open(int dfd, const char *pathname,
-		const struct open_flags *op, int lookup_flags);
+extern struct file *do_filp_open(int dfd, struct filename *pathname,
+		const struct open_flags *op, int flags);
 extern struct file *do_file_open_root(struct dentry *, struct vfsmount *,
 		const char *, const struct open_flags *, int lookup_flags);
 
