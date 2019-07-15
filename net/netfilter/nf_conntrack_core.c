@@ -216,6 +216,16 @@ destroy_conntrack(struct nf_conntrack *nfct)
 	rcu_read_unlock();
 
 	spin_lock_bh(&nf_conntrack_lock);
+	
+	pr_debug("freeing item in the SIP list\n");
+	if (ct->sip_segment_list.next != NULL)
+		list_for_each_safe(sip_node_list, sip_node_save_list,
+				   &ct->sip_segment_list) {
+			sip_node = list_entry(sip_node_list,
+					      struct sip_list, list);
+			list_del(&sip_node->list);
+			kfree(sip_node);
+		}
 	/* Expectations will have been removed in clean_from_lists,
 	 * except TFTP can create an expectation on the first packet,
 	 * before connection is in the list, so we need to clean here,
