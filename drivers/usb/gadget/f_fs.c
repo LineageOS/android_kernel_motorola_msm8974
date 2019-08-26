@@ -1016,7 +1016,7 @@ static long ffs_epfile_ioctl(struct file *file, unsigned code,
 			ret = copy_to_user((void *)value, desc, sizeof(*desc));
 			if (ret)
 				ret = -EFAULT;
-				return ret;
+			return ret;
 			}
 		default:
 			ret = -ENOTTY;

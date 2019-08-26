@@ -2711,7 +2711,7 @@ __limProcessSmeDisassocReq(tpAniSirGlobal pMac, tANI_U32 *pMsgBuf)
     }
     else
         disassocTrigger = eLIM_HOST_DISASSOC;
-        reasonCode      = smeDisassocReq.reasonCode;
+    reasonCode      = smeDisassocReq.reasonCode;
 
     if (smeDisassocReq.doNotSendOverTheAir)
     {
