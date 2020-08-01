@@ -182,13 +182,13 @@
 	i2c_0: i2c@f9967000 {   /* Unused on BLSP11 (BLSP2 QUP4) */
 		status = "disabled";
 		qcom,i2c-bus-freq = <400000>;
-		qcom,i2c-src-freq = <50000000>;
+		qcom,i2c-src-freq = <19200000>;
 	};
 
 	i2c_1: i2c@f9923000 {   /* "I2C4" on BLSP1 (BLSP1 UART0) */
 		status = "disabled";
 		qcom,i2c-bus-freq = <400000>;
-		qcom,i2c-src-freq = <50000000>;
+		qcom,i2c-src-freq = <19200000>;
 	};
 
 	i2c_2: i2c@f9924000 {   /* "I2C5" on BLSP2 (BLSP1 QUP1) */
@@ -207,7 +207,7 @@
 		qcom,scl-gpio = <&msmgpio 26 0>;
 		qcom,sda-gpio = <&msmgpio 25 0>;
 		qcom,i2c-bus-freq = <400000>;
-		qcom,i2c-src-freq = <50000000>;
+		qcom,i2c-src-freq = <19200000>;
 		qcom,master-id = <86>;
 	};
 
@@ -221,7 +221,7 @@
 		interrupts = <0 102 0>;
 		interrupt-names = "qup_err_intr";
 		qcom,i2c-bus-freq = <100000>;
-		qcom,i2c-src-freq = <50000000>;
+		qcom,i2c-src-freq = <19200000>;
 		qcom,master-id = <84>;
 	};
 
@@ -235,7 +235,7 @@
 		interrupts = <0 98 0>;
 		interrupt-names = "qup_err_intr";
 		qcom,i2c-bus-freq = <100000>;
-		qcom,i2c-src-freq = <50000000>;
+		qcom,i2c-src-freq = <19200000>;
 		qcom,master-id = <86>;
 	};
 
