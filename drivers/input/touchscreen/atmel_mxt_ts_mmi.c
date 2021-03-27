@@ -2518,7 +2518,7 @@ static void mxt_set_sensor_state(struct mxt_data *data, int state)
 		data->enable_reporting = false;
 		if (!data->in_bootloader)
 			mxt_sensor_state_config(data, SUSPEND_IDX);
-		break;
+			break;
 
 	case STATE_ACTIVE:
 		if (!data->in_bootloader)
@@ -2547,7 +2547,7 @@ static void mxt_set_sensor_state(struct mxt_data *data, int state)
 		/* set flag to avoid object specific message handling */
 		if (!data->in_bootloader)
 			data->in_bootloader = true;
-		break;
+			break;
 	}
 
 	pr_info("state change %s -> %s\n", mxt_state_name(current_state),
