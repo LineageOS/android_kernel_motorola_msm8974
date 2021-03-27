@@ -432,20 +432,17 @@ static int32_t msm_actuator_power_down(struct msm_actuator_ctrl_t *a_ctrl)
 {
 	int32_t rc = 0;
 	CDBG("Enter\n");
-	if (a_ctrl->actuator_state != ACTUATOR_POWER_DOWN) {
-		if (a_ctrl->vcm_enable) {
-			rc = gpio_direction_output(a_ctrl->vcm_pwd, 0);
-			if (!rc)
-				gpio_free(a_ctrl->vcm_pwd);
-		}
-
-		kfree(a_ctrl->step_position_table);
-		a_ctrl->step_position_table = NULL;
-		kfree(a_ctrl->i2c_reg_tbl);
-		a_ctrl->i2c_reg_tbl = NULL;
-		a_ctrl->i2c_tbl_index = 0;
-		a_ctrl->actuator_state = ACTUATOR_POWER_DOWN;
+	if (a_ctrl->vcm_enable) {
+		rc = gpio_direction_output(a_ctrl->vcm_pwd, 0);
+		if (!rc)
+			gpio_free(a_ctrl->vcm_pwd);
 	}
+
+	kfree(a_ctrl->step_position_table);
+	a_ctrl->step_position_table = NULL;
+	kfree(a_ctrl->i2c_reg_tbl);
+	a_ctrl->i2c_reg_tbl = NULL;
+	a_ctrl->i2c_tbl_index = 0;
 	CDBG("Exit\n");
 	return rc;
 }
@@ -614,7 +611,6 @@ static int32_t msm_actuator_init(struct msm_actuator_ctrl_t *a_ctrl,
 
 	a_ctrl->curr_step_pos = 0;
 	a_ctrl->curr_region_index = 0;
-	a_ctrl->actuator_state = ACTUATOR_POWER_UP;
 	CDBG("Exit\n");
 
 	return rc;
