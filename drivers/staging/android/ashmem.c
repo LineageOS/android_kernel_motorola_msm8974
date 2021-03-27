@@ -270,7 +270,7 @@ static loff_t ashmem_llseek(struct file *file, loff_t offset, int origin)
 
 	mutex_unlock(&ashmem_mutex);
 
-	ret = vfs_llseek(asma->file, offset, origin);
+	ret = asma->file->f_op->llseek(asma->file, offset, origin);
 	if (ret < 0)
 		return ret;
 
