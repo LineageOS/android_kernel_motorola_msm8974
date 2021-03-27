@@ -37,7 +37,6 @@
 #ifndef NFS_IDMAP_H
 #define NFS_IDMAP_H
 
-#include <linux/uidgid.h>
 #include <linux/types.h>
 
 /* XXX from bits/utmp.h  */

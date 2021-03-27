@@ -58,7 +58,6 @@
 
 #include <linux/types.h>
 #include <linux/time.h>
-#include <linux/uidgid.h>
 
 struct kstat {
 	u64		ino;

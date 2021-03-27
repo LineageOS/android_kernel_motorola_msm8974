@@ -79,7 +79,6 @@ struct ipc_kludge {
 
 #ifdef __KERNEL__
 #include <linux/spinlock.h>
-#include <linux/uidgid.h>
 
 #define IPCMNI 32768  /* <= MAX_INT limit for ipc arrays (including sysctl changes) */
 

@@ -24,7 +24,6 @@
 #include <linux/atomic.h>
 
 #ifdef __KERNEL__
-#include <linux/uidgid.h>
 
 /* key handle serial number */
 typedef int32_t key_serial_t;

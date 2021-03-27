@@ -24,7 +24,6 @@
 #include <linux/pinctrl/devinfo.h>
 #include <linux/pm.h>
 #include <linux/atomic.h>
-#include <linux/uidgid.h>
 #include <asm/device.h>
 
 struct device;

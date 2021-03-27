@@ -5,7 +5,6 @@
 #ifndef __NETNS_IPV4_H__
 #define __NETNS_IPV4_H__
 
-#include <linux/uidgid.h>
 #include <net/inet_frag.h>
 
 struct ctl_table_header;
