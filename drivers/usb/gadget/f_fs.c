@@ -326,7 +326,7 @@ struct ffs_epfile {
 
 	struct dentry			*dentry;
 
-	char				name[5];
+	char				name[16];
 
 	unsigned char			in;	/* P: ffs->eps_lock */
 	unsigned char			isoc;	/* P: ffs->eps_lock */
